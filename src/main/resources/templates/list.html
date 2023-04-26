@@ -13,10 +13,10 @@
         <thead>
         <tr>
           <th scope="col">ID
-            <a href="/salaries?page=0&size=10&sortProperty=id&sortDirection=DESC"><i class="fa fa-chevron-up"></i></a>
+            <a th:href="@{/salaries?page={page}&sortDirection={sort}(page = ${page}, sort = ${sortdir} == 'asc' ? 'desc' : 'asc')}"><i class="fa fa-chevron-up"></i></a>
           </th>
           <th scope="col">Nom
-            <a href="/salaries?page=0&size=10&sortProperty=nom&sortDirection=DESC"><i class="fa fa-chevron-up"></i></a>
+            <a th:href="@{/salaries?page={page}&sortDirection={sortdir}&sortProperty=nom(page = ${page}, sortdir = ${sortdir} == 'asc' ? 'desc' : 'asc')}"><i class="fa fa-chevron-up"></i></a>
           </th>
           <th scope="col"></th>
         </tr>
@@ -35,11 +35,11 @@
         <div class="col-lg-6">
           <ul class="pagination">
             <li class="page-item" th:classappend="${page} == 0 ? 'disabled' : ''">
-              <a class="page-link" th:href="@{/salaries?page={page}(page = ${page} - 1)}">«</a>
+              <a class="page-link" th:href="@{/salaries?page={page}&sortDirection={sortdir}&sortProperty={sortpro}(page = ${page} - 1, sortdir = ${sortdir}, sortpro = ${sortpro})}">«</a>
             </li>
-            <li><a href="#" class="page-link">Page 1</a></li>
+            <li><a href="#" class="page-link">Page <span th:text="${page} + 1"></span></a></li>
             <li class="page-item ">
-              <a class="page-link" th:href="@{/salaries?page={page}(page = ${page} + 1)}">»</a></li>
+              <a class="page-link" th:href="@{/salaries?page={page}&sortDirection={sortdir}&sortProperty={sortpro}(page = ${page} + 1, sortdir = ${sortdir}, sortpro = ${sortpro})}">»</a></li>
           </ul></div>
       </div>
     </div>

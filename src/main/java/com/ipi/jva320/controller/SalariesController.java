@@ -71,6 +71,8 @@ public class SalariesController {
             model.addAttribute("salariees", salarieAideADomicileService.getSalaries(pageable));
         }
         model.put("page", page);
+        model.put("sortdir", sortDirection);
+        model.put("sortpro", sortProperty);
         if(page == 0) {
             model.put("disable", true);
         } else {
