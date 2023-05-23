@@ -68,7 +68,7 @@ public class SalariesController {
             Page itemPages = salarieAideADomicileService.getSalaries(pageable);
             model.addAttribute("salariees", itemPages.getContent());
         } else {
-            model.addAttribute("salariees", salarieAideADomicileService.getSalaries(pageable));
+            model.addAttribute("salariees", salarieAideADomicileService.getSalaries(nom));
         }
         model.put("page", page);
         model.put("sortdir", sortDirection);
