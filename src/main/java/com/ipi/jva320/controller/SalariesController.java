@@ -35,9 +35,10 @@ public class SalariesController {
 
     @PostMapping("/salaries/save")
     public String addNewSalarie(@ModelAttribute SalarieAideADomicile salarieAideADomicile, final ModelMap model) throws SalarieException {
+        System.out.println(salarieAideADomicile.getMoisDebutContrat());
         salarieAideADomicileService.creerSalarieAideADomicile(salarieAideADomicile);
         model.addAttribute("salariees", salarieAideADomicileService.getSalaries());
-        return "list";
+        return "redirect:/salaries";
     }
 
     @PostMapping("/salaries/update")
@@ -48,7 +49,7 @@ public class SalariesController {
         System.out.println(salarieAideADomicile.getId());
         salarieAideADomicileService.updateSalarieAideADomicile(salarieAideADomicile);
         model.addAttribute("salariees", salarieAideADomicileService.getSalaries());
-        return "list";
+        return "redirect:/salaries";
     }
 
     @RequestMapping("/salaries")
